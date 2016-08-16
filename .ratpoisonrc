@@ -4,15 +4,23 @@ exec xmobar
 addhook switchframe banishrel
 escape Super_L
 
-bind h prevscreen
-bind s-h prevscreen
-bind Left prevscreen
-bind s-Left prevscreen
+bind left prevscreenframe
+bind h prevscreenframe
+bind s-h prevscreenframe
+bind Left prevscreenframe
+bind s-Left prevscreenframe
 
-bind l nextscreen
-bind s-l nextscreen
-bind Right nextscreen
-bind s-Right nextscreen
+bind right prevscreenframe
+bind l nextscreenframe
+bind s-l nextscreenframe
+bind Right nextscreenframe
+bind s-Right nextscreenframe
+
+bind j focusdown
+bind s-j focusdown
+
+bind k focusup
+bind s-k focusup
 
 bind r exec
 bind s-r exec
@@ -21,3 +29,6 @@ bind t time
 
 bind plus exec amixer -q set Master 3dB+
 bind minus exec amixer -q set Master 3dB-
+
+alias nextscreenframe exec RAT_FRAME="$(ratpoison -c curframe)"; ratpoison -c focusright; if [ "$RAT_FRAME" == "$(ratpoison -c curframe)" ]; then ratpoison -c nextscreen; fi;
+alias prevscreenframe exec RAT_FRAME="$(ratpoison -c curframe)"; ratpoison -c focusleft; if [ "$RAT_FRAME" == "$(ratpoison -c curframe)" ]; then ratpoison -c prevscreen; fi;
