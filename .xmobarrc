@@ -1,0 +1,19 @@
+Config {	
+	font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+	, borderColor = "black"
+	, border = TopB
+	, bgColor = "black"
+	, fgColor = "grey"
+	, position = BottomW L 100
+	, commands = [
+		Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+		, Run Memory ["-t","Mem: <usedratio>%"] 10
+		, Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+		, Run Network "enp8s0" ["-L","0","-H","400000","--normal","green","--high","red", "--template", "Up: <rx>KB - Down: <tx>KB"] 10
+		, Run Locks
+		, Run Com "/home/opo/git/dotfiles/.xmorat.sh" [""] "windows" 5
+		]
+	, sepChar = "%"
+	, alignSep = "}{"
+	, template = "%windows% }{ %locks% <fc=#ee9a00>%cpu%</fc> | <fc=#ee9a00>%memory%</fc> | <fc=#ee9a00>%enp8s0%</fc> | <fc=#ee9a00>%date%</fc>"
+        }

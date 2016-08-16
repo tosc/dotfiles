@@ -1,0 +1,23 @@
+set winname class
+set padding 0 0 0 18
+exec xmobar
+addhook switchframe banishrel
+escape Super_L
+
+bind h prevscreen
+bind s-h prevscreen
+bind Left prevscreen
+bind s-Left prevscreen
+
+bind l nextscreen
+bind s-l nextscreen
+bind Right nextscreen
+bind s-Right nextscreen
+
+bind r exec
+bind s-r exec
+
+bind t time
+
+bind plus exec amixer -q set Master 3dB+
+bind minus exec amixer -q set Master 3dB-
