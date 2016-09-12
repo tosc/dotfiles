@@ -1,6 +1,7 @@
 set winname class
 set padding 0 0 0 18
 exec xmobar
+startup_message off
 addhook switchframe banishrel
 escape Super_L
 
@@ -27,8 +28,12 @@ bind s-r exec
 
 bind t time
 
-bind plus exec amixer -q set Master 3dB+
-bind minus exec amixer -q set Master 3dB-
+bind plus exec amixer -q set Master 1dB+
+bind minus exec amixer -q set Master 1dB-
 
+bind v ratclick 2
+
+# Goes to the next frame if there is one.
+# If not, it moves to the next screen.
 alias nextscreenframe exec RAT_FRAME="$(ratpoison -c curframe)"; ratpoison -c focusright; if [ "$RAT_FRAME" == "$(ratpoison -c curframe)" ]; then ratpoison -c nextscreen; fi;
 alias prevscreenframe exec RAT_FRAME="$(ratpoison -c curframe)"; ratpoison -c focusleft; if [ "$RAT_FRAME" == "$(ratpoison -c curframe)" ]; then ratpoison -c prevscreen; fi;
