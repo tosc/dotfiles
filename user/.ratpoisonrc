@@ -11,7 +11,7 @@ bind s-h prevscreenframe
 bind Left prevscreenframe
 bind s-Left prevscreenframe
 
-bind right prevscreenframe
+bind right nextscreenframe
 bind l nextscreenframe
 bind s-l nextscreenframe
 bind Right nextscreenframe
