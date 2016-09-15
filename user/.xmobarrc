@@ -8,8 +8,8 @@ Config {
 	, commands = [
 		Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
 		, Run Locks
-		, Run Com "/home/opo/git/dotfiles/xmorat.sh" [""] "windows" 5
-		, Run Com "/home/opo/git/dotfiles/xmovol.sh" [""] "vol" 10
+		, Run Com "/home/opo/git/dotfiles/scripts/xmorat.sh" [""] "windows" 5
+		, Run Com "/home/opo/git/dotfiles/scripts/xmovol.sh" [""] "vol" 10
 		]
 	, sepChar = "%"
 	, alignSep = "}{"
