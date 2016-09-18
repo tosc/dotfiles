@@ -12,7 +12,7 @@ alias ls='ls --color=auto'
 # PS1='[\u@\h \w] '
 # Better prompt.
 # 30 black, 31 red, 32 green, 33 yellow, 34 blue, 35 purple, 36 cyan, 37 white
-PS1='\e[1;34m\][\u \w]\e[0m\] '
+PS1='\[\033[1;34m\][\u \w]\[\033[0m\] '
 
 # Use vim to look at manpages.
 export MANPAGER="vimpager"

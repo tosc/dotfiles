@@ -33,7 +33,11 @@ bind minus exec amixer -q set Master 1dB-
 
 bind v ratclick 2
 
+bind i invertcolors
+
 # Goes to the next frame if there is one.
 # If not, it moves to the next screen.
 alias nextscreenframe exec RAT_FRAME="$(ratpoison -c curframe)"; ratpoison -c focusright; if [ "$RAT_FRAME" == "$(ratpoison -c curframe)" ]; then ratpoison -c nextscreen; fi;
 alias prevscreenframe exec RAT_FRAME="$(ratpoison -c curframe)"; ratpoison -c focusleft; if [ "$RAT_FRAME" == "$(ratpoison -c curframe)" ]; then ratpoison -c prevscreen; fi;
+# Requires the xcalib package. Install from yaourt if you are on Arch.
+alias invertcolors exec ratpoison -c "windows %s%x" | while read p; do if [ "${p:0:1}" == "*" ]; then xcalib -i -a -screen ${p:1:2}; fi done
