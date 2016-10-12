@@ -1,4 +1,4 @@
-" Settings
+" ---- [1] Settings -----------------
 
 " Only show tabline and not the rest of the gui
 set gui=none
@@ -12,7 +12,8 @@ set fh=1
 " Hint input fields display a name
 set hin=name
 
-" Normal bindings
+" ------------------------------------
+" ---- [2] Normal bindings -----------
 
 noremap j 5j
 noremap k 5k
@@ -30,7 +31,10 @@ noremap C-u PgDown
 
 noremap b <C-A-b>
 
-" ---- [3] COLORSCHEME ----
+noremap U :back<cr>
+
+" ------------------------------------
+" ---- [3] Colorscheme ---------------
 " Desert colorscheme
 hi StatusLine color: #ffffff !important; background-color: #000000 !important; font-weight: bold !important;
 hi Normal color: #ffffff; background: #333333; font-weight: bold !important;
@@ -58,4 +62,4 @@ hi ModeMsg color: #ffffff !important; background: #333333 !important;
 hi MoreMsg color: #6b8e23 !important; background: #333333 !important;
 hi Question color: #6b8e23 !important; background: #333333 !important; font-weight: bold !important;
 hi WarningMsg color: #ffa0a0 !important; background: #333333 !important;
-" --------------------
+" ------------------------------------

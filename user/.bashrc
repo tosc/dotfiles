@@ -25,5 +25,3 @@ stty -ixon
 
 alias ls='ls --color=auto'
 alias sftp='cd /home/opo/tor; sftp'
-alias aur='yaourt'
-alias ventrilo='mangler'
