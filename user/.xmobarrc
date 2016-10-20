@@ -13,5 +13,5 @@ Config {
 		]
 	, sepChar = "%"
 	, alignSep = "}{"
-	, template = "%windows% }{     %locks% %vol% <fc=#ee9a00>%date%</fc>"
+	, template = "%windows% }{     %locks%             %vol% <fc=#ee9a00>%date%</fc>"
         }
