@@ -3,6 +3,7 @@ set padding 0 0 0 18
 exec xmobar
 unmanage stalonetray
 exec stalonetray
+exec nm-applet
 startup_message off
 addhook switchframe banishrel
 escape Super_L
