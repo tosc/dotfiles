@@ -20,8 +20,8 @@ bind Left prevscreenframe
 bind l nextscreenframe
 bind Right nextscreenframe
 
-bind j focusdown
-bind k focusup
+bind j upscreenframe
+bind k downscreenframe
 
 bind q kill
 bind t time
@@ -43,16 +43,20 @@ bind S-space focuslast
 
 bind odiaeresis select
 
-bind H swapprev
-bind L swapnext
+bind H exec ~/git/dotfiles/scripts/ratswap.sh 0 0
+bind L exec ~/git/dotfiles/scripts/ratswap.sh 0 1
+bind J exec ~/git/dotfiles/scripts/ratswap.sh 1 0
+bind K exec ~/git/dotfiles/scripts/ratswap.sh 1 1
 
 # Goes to the next frame if there is one.
 # If not, it moves to the next screen.
-alias nextscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 1)"
-alias prevscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 0)"
+alias nextscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 0 1)"
+alias prevscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 0 0)"
+alias upscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 1 1)"
+alias downscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 1 0)"
 # Requires the xcalib package. Install from yaourt if you are on Arch.
 alias invertcolors exec ratpoison -c "windows %s%x" | while read p; do if [ "${p:0:1}" == "*" ]; then xcalib -i -a -screen ${p:1:2}; fi done
 alias moveprev exec ratpoison -c focuslast; ratpoison -c "select -"; ratpoison -c focuslast; ratpoison -c other
 
-alias swapnext exec ratpoison -c "gmove $(~/git/dotfiles/scripts/ratframe.sh 1)"; ratpoison -c "select -"; ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 1)"; sleep .05; ratpoison -c "other"
-alias swapprev exec ratpoison -c "gmove $(~/git/dotfiles/scripts/ratframe.sh 0)"; ratpoison -c "select -"; ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 0)"; sleep .05; ratpoison -c "other"
+alias swapnext exec ratpoison -c "gmove $(~/git/dotfiles/scripts/ratframe.sh 0 1)"; ratpoison -c "select -"; ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 1)"; sleep .05; ratpoison -c "other"
+alias swapprev exec ratpoison -c "gmove $(~/git/dotfiles/scripts/ratframe.sh 0 0)"; ratpoison -c "select -"; ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 0)"; sleep .05; ratpoison -c "other"
