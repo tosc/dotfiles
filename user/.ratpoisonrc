@@ -8,20 +8,15 @@ startup_message off
 addhook switchframe banishrel
 escape Super_L
 
-bind left prevscreenframe
 bind h prevscreenframe
 bind Left prevscreenframe
-bind S-Left prevscreenframe
-
-bind right nextscreenframe
 bind l nextscreenframe
 bind Right nextscreenframe
-bind S-Right nextscreenframe
 
 bind j focusdown
-
 bind k focusup
 
+bind q kill
 bind t time
 
 bind plus exec amixer -q set Master 1dB+
@@ -37,15 +32,14 @@ bind z select -
 bind Z moveprev
 
 bind space other
-
 bind S-space focuslast
 
 bind odiaeresis select
 
 # Goes to the next frame if there is one.
 # If not, it moves to the next screen.
-alias nextscreenframe exec RAT_FRAME="$(ratpoison -c curframe)"; ratpoison -c focusright; if [ "$RAT_FRAME" == "$(ratpoison -c curframe)" ]; then ratpoison -c nextscreen; fi;
-alias prevscreenframe exec RAT_FRAME="$(ratpoison -c curframe)"; ratpoison -c focusleft; if [ "$RAT_FRAME" == "$(ratpoison -c curframe)" ]; then ratpoison -c prevscreen; fi;
+alias nextscreenframe exec ~/git/dotfiles/scripts/ratmove.sh 1
+alias prevscreenframe exec ~/git/dotfiles/scripts/ratmove.sh 0
 # Requires the xcalib package. Install from yaourt if you are on Arch.
 alias invertcolors exec ratpoison -c "windows %s%x" | while read p; do if [ "${p:0:1}" == "*" ]; then xcalib -i -a -screen ${p:1:2}; fi done
 alias moveprev exec ratpoison -c focuslast; ratpoison -c "select -"; ratpoison -c focuslast; ratpoison -c other
