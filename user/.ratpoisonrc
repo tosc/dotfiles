@@ -48,6 +48,10 @@ bind L exec ~/git/dotfiles/scripts/ratswap.sh 0 1
 bind J exec ~/git/dotfiles/scripts/ratswap.sh 1 0
 bind K exec ~/git/dotfiles/scripts/ratswap.sh 1 1
 
+bind g groups
+
+bind R exec ~/git/dotfiles/scripts/ratmerge.sh
+
 # Goes to the next frame if there is one.
 # If not, it moves to the next screen.
 alias nextscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 0 1)"
