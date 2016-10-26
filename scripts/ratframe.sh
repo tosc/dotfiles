@@ -186,6 +186,9 @@ if [ "$2" == "1" ]; then
 else
 	doneC=$doneH
 fi
+if [ "$doneC" == "" ]; then
+	doneC=$curFrame
+fi
 if [ $1 == 2 ]; then
 	if [ "$doneC" == "$curFrame" ]; then
 		doneC=""
