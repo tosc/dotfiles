@@ -5,7 +5,14 @@ unmanage stalonetray
 exec stalonetray
 exec nm-applet
 startup_message off
+
+grename f0
+gnewbg f1
+gnewbg f2
+
 addhook switchframe banishrel
+addhook switchframe exec ~/git/dotfiles/scripts/ratgroups.sh
+
 escape Super_L
 
 bind h prevscreenframe
