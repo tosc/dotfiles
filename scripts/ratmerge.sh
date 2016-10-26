@@ -3,7 +3,9 @@ if [ "$mergeWindow" == "" ]; then
 	echo "Don't merge"	
 else
 	echo "Merge"
-	ratpoison -c "gmerge f$mergeWindow"
-	ratpoison -c "gdelete f$mergeWindow"
+	oldW="$(ratpoison -c 'curframe')"
+	ratpoison -c "gselect f$mergeWindow"
+	ratpoison -c "gmerge f$oldW"
+	ratpoison -c "gdelete f$oldW"
 	ratpoison -c remove
 fi
