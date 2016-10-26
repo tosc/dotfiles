@@ -8,4 +8,5 @@ else
 	ratpoison -c "gmerge f$oldW"
 	ratpoison -c "gdelete f$oldW"
 	ratpoison -c remove
+	rm ~/tmp/ratf/$oldW
 fi
