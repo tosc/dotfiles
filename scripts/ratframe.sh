@@ -83,7 +83,4 @@ if [ "$1" == "1" ]; then
 else
 	doneC=$doneH
 fi
-echo $doneH
-echo $doneL
-nr=$(echo $doneC | cut -f2 -d-)
-ratpoison -c "fselect $nr"
+echo $(echo $doneC | cut -f2 -d-)
