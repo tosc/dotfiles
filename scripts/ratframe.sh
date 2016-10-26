@@ -2,6 +2,7 @@
 #	$1 == 0 gives the framenumber to the left or right.
 #	$1 == 1 gives the framenumber above or below.
 #	$1 == 2 a frame in the same window as the current frame, if there is one.
+#	$1 == 3 current frame in this format: x-y-framenr-screennr-sortnr
 # $2 is the direction of the script. (default 0)
 #	$2 == 0 is left or up depending on context.
 #	$2 == 1 is right or down depending on context.
@@ -119,6 +120,26 @@ samewindow()
 	fi
 )
 
+# $1 = 1 appends the sortorder of the frame.
+cframe()
+(
+	cframe=""
+	index=0
+	for frame in $curframes; do
+		nr=$(echo $frame | cut -f3 -d-)
+		if [ "$(ratpoison -c curframe)" == "$nr" ]; then
+			if [ "$1" == "1" ]; then
+				cframe=$frame-$index
+			else
+				cframe=$frame
+			fi
+			break
+		fi
+		index=$((index + 1))
+	done
+	echo $cframe
+)
+
 if [ $1 == 1 ]; then
 	curframes=$(frames 1)
 elif [ $1 == 2 ]; then
@@ -126,72 +147,71 @@ elif [ $1 == 2 ]; then
 else
 	curframes=$(frames)
 fi
-prevFrame=""
-firstFrame=""
-curFrame=""
-doneH=""
-doneL=""
-doneC=""
-done=0
-skip=0
-index=0
 
-for frame in $curframes; do
-	nr=$(echo $frame | cut -f3 -d-)
-	if [ "$(ratpoison -c curframe)" == "$nr" ]; then
-		curFrame=$frame
-		break
-	fi
-done
-for frame in $curframes; do
-	skip=1
-	if [ $1 == 0 ]; then
-		if [ $(inrow $frame $curFrame) == "1" ]; then
-			skip=0
-		fi
-	elif [ $1 == 2 ]; then
-		if [ $(samewindow $frame $curFrame) == "1" ]; then
-			skip=0
-		fi
-	elif [ $1 == 1 ]; then
-		if [ $(incolumn $frame $curFrame) == "1" ]; then
-			skip=0
-		fi
-	fi
-	if [ $skip == 0 ]; then
-		if [ "$firstFrame" == "" ]; then
-			firstFrame=$frame
-		fi
-		if [ $done == 1 ]; then
-			done=0
-			doneL=$frame
-		fi
-	fi
-	if [ "$curFrame" == "$frame" ]; then
-		doneH=$prevFrame
-		done=1
-	fi
-	if [ $skip == 0 ]; then
-		prevFrame=$frame
-	fi
-done
-if [ "$doneH" == "" ]; then
-	doneH=$prevFrame
-fi
-if [ "$doneL" = "" ]; then
-	doneL=$firstFrame
-fi
-if [ "$2" == "1" ]; then
-	doneC=$doneL
+if [ $1 == 3 ]; then
+	curFrame=$(cframe 1)
+	echo $curFrame
 else
-	doneC=$doneH
-fi
-if [ "$doneC" == "" ]; then
-	doneC=$curFrame
-fi
-if [ $1 == 2 ]; then
-	if [ "$doneC" == "$curFrame" ]; then
-		doneC=""
+	curFrame=$(cframe)
+	prevFrame=""
+	firstFrame=""
+	doneC=""
+	doneH=""
+	doneL=""
+	done=0
+	skip=0
+	index=0
+
+	for frame in $curframes; do
+		skip=1
+		if [ $1 == 0 ]; then
+			if [ $(inrow $frame $curFrame) == "1" ]; then
+				skip=0
+			fi
+		elif [ $1 == 2 ]; then
+			if [ $(samewindow $frame $curFrame) == "1" ]; then
+				skip=0
+			fi
+		elif [ $1 == 1 ]; then
+			if [ $(incolumn $frame $curFrame) == "1" ]; then
+				skip=0
+			fi
+		fi
+		if [ $skip == 0 ]; then
+			if [ "$firstFrame" == "" ]; then
+				firstFrame=$frame
+			fi
+			if [ $done == 1 ]; then
+				done=0
+				doneL=$frame
+			fi
+		fi
+		if [ "$curFrame" == "$frame" ]; then
+			doneH=$prevFrame
+			done=1
+		fi
+		if [ $skip == 0 ]; then
+			prevFrame=$frame
+		fi
+	done
+	if [ "$doneH" == "" ]; then
+		doneH=$prevFrame
 	fi
+	if [ "$doneL" = "" ]; then
+		doneL=$firstFrame
+	fi
+	if [ "$2" == "1" ]; then
+		doneC=$doneL
+	else
+		doneC=$doneH
+	fi
+	if [ "$doneC" == "" ]; then
+		doneC=$curFrame
+	fi
+	if [ $1 == 2 ]; then
+		if [ "$doneC" == "$curFrame" ]; then
+			doneC=""
+		fi
+	fi
+	echo $(echo $doneC | cut -f3 -d-)
 fi
-echo $(echo $doneC | cut -f3 -d-)
