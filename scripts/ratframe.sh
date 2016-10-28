@@ -151,6 +151,10 @@ fi
 if [ $1 == 3 ]; then
 	curFrame=$(cframe 1)
 	echo $curFrame
+elif [ $1 == 4 ]; then
+	for frame in $curframes; do
+		echo $(echo $frame | cut -f3 -d-)
+	done
 else
 	curFrame=$(cframe)
 	prevFrame=""

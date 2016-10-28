@@ -7,9 +7,8 @@ else
 	curFrame="$(~/git/dotfiles/scripts/ratframe.sh 3)"
 	oldW=$(echo $curFrame | cut -f3 -d-)
 	sortNr=$(echo $curFrame | cut -f5 -d-)
-	ratpoison -c "gselect f$mergeWindow"
-	ratpoison -c "gmerge f$oldW"
-	ratpoison -c "gdelete f$oldW"
+	ratpoison -c "gselect :$mergeWindow"
+	ratpoison -c "gmerge :$oldW"
+	ratpoison -c "gdelete :$oldW"
 	ratpoison -c remove
-	rm ~/tmp/ratf/*
 fi

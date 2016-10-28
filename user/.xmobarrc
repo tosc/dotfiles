@@ -8,7 +8,7 @@ Config {
 	, commands = [
 		Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
 		, Run Locks
-		, Run Com "/home/opo/git/dotfiles/scripts/xmorat.sh" [""] "windows" 1
+		, Run Com "/home/opo/git/dotfiles/scripts/xmorat.sh" [""] "windows" 2
 		, Run Com "/home/opo/git/dotfiles/scripts/xmovol.sh" [""] "vol" 10
 		]
 	, sepChar = "%"

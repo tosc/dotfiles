@@ -8,9 +8,7 @@ startup_message off
 
 exec rm -r ~/tmp/ratf
 
-grename f0
-gnewbg f1
-gnewbg f2
+grename :0:
 
 addhook switchframe banishrel
 addhook switchframe exec ~/git/dotfiles/scripts/ratgroups.sh
@@ -28,10 +26,12 @@ bind k downscreenframe
 bind q kill
 bind t time
 
-bind plus exec amixer -q set Master 1dB+
 bind minus exec amixer -q set Master 1dB-
+bind period exec amixer -q set Master 1dB+
 
-bind v ratclick 2
+bind s split
+bind v hsplit
+bind plus ratclick 2
 
 bind i invertcolors
 
@@ -64,5 +64,4 @@ alias downscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratfra
 alias invertcolors exec ratpoison -c "windows %s%x" | while read p; do if [ "${p:0:1}" == "*" ]; then xcalib -i -a -screen ${p:1:2}; fi done
 alias moveprev exec ratpoison -c focuslast; ratpoison -c "select -"; ratpoison -c focuslast; ratpoison -c other
 
-alias swapnext exec ratpoison -c "gmove $(~/git/dotfiles/scripts/ratframe.sh 0 1)"; ratpoison -c "select -"; ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 1)"; sleep .05; ratpoison -c "other"
-alias swapprev exec ratpoison -c "gmove $(~/git/dotfiles/scripts/ratframe.sh 0 0)"; ratpoison -c "select -"; ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 0)"; sleep .05; ratpoison -c "other"
+alias split exec ratpoison -c vsplit; ratpoisonc -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 1 0)"; sleep .05; ratpoison -c "select -"
