@@ -1,4 +1,3 @@
-catch=$(~/git/dotfiles/scripts/ratgroups.sh)
 curframe=$(ratpoison -c "curframe")
 lastScreenNr=""
 first=1
