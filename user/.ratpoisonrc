@@ -6,8 +6,6 @@ exec stalonetray
 exec nm-applet
 startup_message off
 
-exec rm -r ~/tmp/ratf
-
 grename :0:
 
 addhook switchframe banishrel
