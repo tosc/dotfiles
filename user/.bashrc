@@ -24,4 +24,5 @@ trap 'RAT_TITLE=${BASH_COMMAND%% *}; if [ "$RAT_TITLE" == "printf" ]; then RAT_T
 stty -ixon
 
 alias ls='ls --color=auto'
-alias sftp='cd /home/opo/tor; sftp'
+alias sftp='cd /home/opo/down; sftp'
+alias steam='steam-native'
