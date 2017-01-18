@@ -4,12 +4,12 @@ exec xmobar
 unmanage stalonetray
 exec stalonetray
 exec nm-applet
+exec pasystray
+exec ratsg
 startup_message off
-
-grename :0:
+warp off
 
 addhook switchframe banishrel
-addhook switchframe exec ~/git/dotfiles/scripts/ratgroups.sh
 
 escape Super_L
 
