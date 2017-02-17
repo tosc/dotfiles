@@ -50,7 +50,7 @@ bind K exec ~/git/dotfiles/scripts/ratswap.sh 1 1
 
 bind g groups
 
-bind R exec ~/git/dotfiles/scripts/ratmerge.sh
+bind x exec ~/git/dotfiles/scripts/ratmerge.sh
 
 # Goes to the next frame if there is one.
 # If not, it moves to the next screen.
