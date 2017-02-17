@@ -33,6 +33,9 @@ noremap b <C-A-b>
 
 noremap U :back<cr>
 
+noremap x :emenu View.Enter Reader View<cr>
+noremap X :emenu View.Close Reader View<cr>
+
 " ------------------------------------
 " ---- [3] Colorscheme ---------------
 " Desert colorscheme

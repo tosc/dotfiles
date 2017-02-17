@@ -26,3 +26,4 @@ stty -ixon
 alias ls='ls --color=auto'
 alias sftp='cd /home/opo/down; sftp'
 alias steam='steam-native'
+alias tmux='TERM=screen-256color tmux'
