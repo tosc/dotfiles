@@ -1,4 +1,9 @@
-xterm*faceName: Inconsolata-bold
+xterm*faceName: Inconsolata
 xterm*faceSize: 14
 xterm*background: black
 xterm*foreground: white
+
+urxvt*font: xft:Inconsolata-bold:size=14:antialias=true
+urxvt*background: black
+urxvt*foreground: white
+urxvt*scrollBar: false
