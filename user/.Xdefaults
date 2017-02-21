@@ -3,7 +3,11 @@ xterm*faceSize: 14
 xterm*background: black
 xterm*foreground: white
 
-urxvt*font: xft:Inconsolata-bold:size=14:antialias=true
-urxvt*background: black
-urxvt*foreground: white
-urxvt*scrollBar: false
+URxvt*font: xft:Inconsolata-bold:size=14:antialias=true
+URxvt*scrollBar: false
+
+URxvt.background: black
+URxvt.foreground: white
+
+URxvt.color4:    #2359af
+URxvt.color12:   #3a74d1

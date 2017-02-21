@@ -22,7 +22,7 @@ bind j upscreenframe
 bind k downscreenframe
 
 bind q kill
-bind t time
+bind t exec urxvt -e tmux
 
 bind minus exec amixer -q set Master 1dB-
 bind period exec amixer -q set Master 1dB+
@@ -34,7 +34,6 @@ bind plus ratclick 2
 bind i invertcolors
 
 bind exclam exec bashrun
-
 bind z select -
 bind Z moveprev
 
@@ -51,6 +50,8 @@ bind K exec ~/git/dotfiles/scripts/ratswap.sh 1 1
 bind g groups
 
 bind x exec ~/git/dotfiles/scripts/ratmerge.sh
+
+bind c echo "USE T"
 
 # Goes to the next frame if there is one.
 # If not, it moves to the next screen.
