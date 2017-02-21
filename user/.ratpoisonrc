@@ -23,6 +23,7 @@ bind k downscreenframe
 
 bind q kill
 bind t exec urxvt -e tmux
+bind T exec urxvt
 
 bind minus exec amixer -q set Master 1dB-
 bind period exec amixer -q set Master 1dB+
