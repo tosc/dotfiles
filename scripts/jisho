@@ -1,0 +1,5 @@
+sleep 0.1
+gnome-screenshot -a -f /home/opo/tmp/ocrtmp 2>/dev/null
+tesseract /home/opo/tmp/ocrtmp /home/opo/tmp/ocrtmp -l jpn 2>/dev/null
+firefox "jisho.org/search/$(cat /home/opo/tmp/ocrtmp.txt | tr '/.' ' ')"
+			echo "[test] | "tr "[" "Y"
