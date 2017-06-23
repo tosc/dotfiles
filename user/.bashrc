@@ -5,9 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Use Color for ls
-alias ls='ls --color=auto'
-
 # Normal prompt without color
 # PS1='[\u@\h \w] '
 # Better prompt.
@@ -24,5 +21,4 @@ trap 'RAT_TITLE=${BASH_COMMAND%% *}; if [ "$RAT_TITLE" == "printf" ]; then RAT_T
 stty -ixon
 
 alias ls='ls --color=auto'
-alias sftp='cd /home/opo/down; sftp'
 alias steam='steam-native'

@@ -6,20 +6,17 @@ exec stalonetray
 exec nm-applet
 exec pasystray
 exec ratsg
+exec unclutter -idle 3
+exec ibus-daemon --xim
 startup_message off
 warp off
 
-addhook switchframe banishrel
-
 escape Super_L
 
-bind h prevscreenframe
-bind Left prevscreenframe
-bind l nextscreenframe
-bind Right nextscreenframe
-
-bind j upscreenframe
-bind k downscreenframe
+bind h exec ratsg scrn-l
+bind Left exec ratsg scrn-l
+bind l exec ratsg scrn-r
+bind Right exec ratsg scrn-r
 
 bind q kill
 bind t exec urxvt -e tmux
@@ -43,10 +40,8 @@ bind S-space focuslast
 
 bind odiaeresis select
 
-bind H exec ~/git/dotfiles/scripts/ratswap.sh 0 0
-bind L exec ~/git/dotfiles/scripts/ratswap.sh 0 1
-bind J exec ~/git/dotfiles/scripts/ratswap.sh 1 0
-bind K exec ~/git/dotfiles/scripts/ratswap.sh 1 1
+bind H exec ratsg move-l
+bind L exec ratsg move-r
 
 bind g groups
 
@@ -54,12 +49,9 @@ bind x remove
 
 bind c echo "USE T"
 
-# Goes to the next frame if there is one.
-# If not, it moves to the next screen.
-alias nextscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 0 1)"
-alias prevscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 0 0)"
-alias upscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 1 1)"
-alias downscreenframe exec ratpoison -c "fselect $(~/git/dotfiles/scripts/ratframe.sh 1 0)"
+bind o exec screenshot-feh
+definekey top F10 exec jisho
+
 # Requires the xcalib package. Install from yaourt if you are on Arch.
 alias invertcolors exec ratpoison -c "windows %s%x" | while read p; do if [ "${p:0:1}" == "*" ]; then xcalib -i -a -screen ${p:1:2}; fi done
 alias moveprev exec ratpoison -c focuslast; ratpoison -c "select -"; ratpoison -c focuslast; ratpoison -c other
