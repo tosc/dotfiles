@@ -37,7 +37,17 @@ noremap x :emenu View.Enter Reader View<cr>
 noremap X :emenu View.Close Reader View<cr>
 
 " ------------------------------------
-" ---- [3] Colorscheme ---------------
+" ---- [3] Commands ------------------
+
+" Commands that increase the size of everything in Firefox.
+command! -description Textsize\ 1.0 s1 :set! layout.css.devPixelsPerPx=1.0
+command! -description Textsize\ 1.25 s2 :set! layout.css.devPixelsPerPx=1.25
+command! -description Textsize\ 1.50 s3 :set! layout.css.devPixelsPerPx=1.50
+command! -description Textsize\ 1.75 s4 :set! layout.css.devPixelsPerPx=1.75
+command! -description Textsize\ 2.0 s5 :set! layout.css.devPixelsPerPx=2.0
+" ------------------------------------
+" ---- [4] Colorscheme ---------------
+
 " Desert colorscheme
 hi StatusLine color: #ffffff !important; background-color: #000000 !important; font-weight: bold !important;
 hi Normal color: #ffffff; background: #333333; font-weight: bold !important;
