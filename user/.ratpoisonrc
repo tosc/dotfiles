@@ -1,6 +1,6 @@
 set winname class
 set padding 0 0 0 18
-exec xmobar
+exec xmobarloop
 unmanage stalonetray
 exec stalonetray
 exec nm-applet
@@ -25,8 +25,9 @@ bind T exec urxvt
 bind minus exec amixer -q set Master 1dB-
 bind period exec amixer -q set Master 1dB+
 
-bind s split
-bind v hsplit
+bind s hsplit
+bind V hsplit
+bind v vsplit
 bind plus ratclick 2
 
 bind i invertcolors
